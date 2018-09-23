@@ -1,1 +1,0 @@
-This is the folder for the Programming side of things for the Autonomous Car.
