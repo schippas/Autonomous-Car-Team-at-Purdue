@@ -11,7 +11,7 @@
 
 # Table of Contents
 ## /Design Documents
-Main folder for design documents 
+Main folder for design notes about important concepts
 
 ## /Design References
 Main folder for datasheets and other PDFs
@@ -22,4 +22,4 @@ Main folder for PCB CAD files
 ## /SAM Programs
 Main folder for Atmel Studio code
 
-#### Last edited 9/23/2018 by Tony
+#### Last edited 9/24/2018 by Tony
