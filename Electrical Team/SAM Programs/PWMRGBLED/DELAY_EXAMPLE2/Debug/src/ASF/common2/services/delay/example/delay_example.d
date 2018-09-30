@@ -1,7 +1,7 @@
 src/ASF/common2/services/delay/example/delay_example.d \
  src/ASF/common2/services/delay/example/delay_example.o: \
  ../src/ASF/common2/services/delay/example/delay_example.c ../src/asf.h \
- ../src/ASF/sam0/utils/compiler.h \
+ ../src/ASF/sam0/drivers/adc/adc.h ../src/ASF/sam0/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
  ../src/ASF/common/utils/parts.h ../src/ASF/sam0/utils/status_codes.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdint.h \
@@ -129,23 +129,27 @@ src/ASF/common2/services/delay/example/delay_example.d \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\alloca.h \
  ../src/ASF/common/utils/interrupt.h \
  ../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h \
- ../src/ASF/common2/services/delay/delay.h \
- ../src/ASF/common2/services/delay/sam0/systick_counter.h \
+ ../src/ASF/sam0/drivers/system/system.h \
  ../src/ASF/sam0/drivers/system/clock/clock.h \
  ../src/ASF/sam0/drivers/system/clock/gclk.h \
  ../src/ASF/sam0/drivers/system/clock/clock_samc20_c21/clock_feature.h \
- ../src/ASF/common/boards/board.h \
- ../src/ASF/sam0/boards/samc21_xplained_pro/samc21_xplained_pro.h \
- ../src/config/conf_board.h ../src/ASF/sam0/drivers/port/port.h \
  ../src/ASF/sam0/drivers/system/pinmux/pinmux.h \
- ../src/ASF/sam0/drivers/system/system.h \
  ../src/ASF/sam0/drivers/system/power/power_sam_c/power.h \
  ../src/ASF/sam0/drivers/system/reset/reset_sam_c/reset.h \
+ ../src/ASF/sam0/drivers/adc/adc_sam_l_c/adc_feature.h \
  ../src/ASF/sam0/drivers/system/interrupt/system_interrupt.h \
  ../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samc20_c21/system_interrupt_features.h \
+ ../src/ASF/sam0/drivers/adc/adc_callback.h \
+ ../src/ASF/common2/services/delay/delay.h \
+ ../src/ASF/common2/services/delay/sam0/systick_counter.h \
+ ../src/ASF/sam0/drivers/extint/extint.h ../src/ASF/common/boards/board.h \
+ ../src/ASF/sam0/boards/samc21_xplained_pro/samc21_xplained_pro.h \
+ ../src/config/conf_board.h ../src/ASF/sam0/drivers/port/port.h \
  ../src/ASF/sam0/drivers/tcc/tcc.h
 
 ../src/asf.h:
+
+../src/ASF/sam0/drivers/adc/adc.h:
 
 ../src/ASF/sam0/utils/compiler.h:
 
@@ -405,15 +409,33 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 
 ../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h:
 
-../src/ASF/common2/services/delay/delay.h:
-
-../src/ASF/common2/services/delay/sam0/systick_counter.h:
+../src/ASF/sam0/drivers/system/system.h:
 
 ../src/ASF/sam0/drivers/system/clock/clock.h:
 
 ../src/ASF/sam0/drivers/system/clock/gclk.h:
 
 ../src/ASF/sam0/drivers/system/clock/clock_samc20_c21/clock_feature.h:
+
+../src/ASF/sam0/drivers/system/pinmux/pinmux.h:
+
+../src/ASF/sam0/drivers/system/power/power_sam_c/power.h:
+
+../src/ASF/sam0/drivers/system/reset/reset_sam_c/reset.h:
+
+../src/ASF/sam0/drivers/adc/adc_sam_l_c/adc_feature.h:
+
+../src/ASF/sam0/drivers/system/interrupt/system_interrupt.h:
+
+../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samc20_c21/system_interrupt_features.h:
+
+../src/ASF/sam0/drivers/adc/adc_callback.h:
+
+../src/ASF/common2/services/delay/delay.h:
+
+../src/ASF/common2/services/delay/sam0/systick_counter.h:
+
+../src/ASF/sam0/drivers/extint/extint.h:
 
 ../src/ASF/common/boards/board.h:
 
@@ -422,17 +444,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 ../src/config/conf_board.h:
 
 ../src/ASF/sam0/drivers/port/port.h:
-
-../src/ASF/sam0/drivers/system/pinmux/pinmux.h:
-
-../src/ASF/sam0/drivers/system/system.h:
-
-../src/ASF/sam0/drivers/system/power/power_sam_c/power.h:
-
-../src/ASF/sam0/drivers/system/reset/reset_sam_c/reset.h:
-
-../src/ASF/sam0/drivers/system/interrupt/system_interrupt.h:
-
-../src/ASF/sam0/drivers/system/interrupt/system_interrupt_samc20_c21/system_interrupt_features.h:
 
 ../src/ASF/sam0/drivers/tcc/tcc.h:

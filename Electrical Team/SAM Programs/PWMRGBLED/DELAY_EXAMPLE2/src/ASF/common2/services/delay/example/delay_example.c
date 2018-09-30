@@ -38,15 +38,15 @@
 /*
  * Support and FAQ: visit <a href="https://www.microchip.com/support/">Microchip Support</a>
  */
+
 #include <asf.h>
 
 static void configure_tcc(void);
 
-//! [module_inst]
 struct tcc_module tcc_instance;
-//! [module_inst]
+struct adc_module adc_instance;
 
-//! [setup]
+
 static void configure_tcc(void)
 {
 	struct tcc_config config_tcc;
@@ -75,59 +75,99 @@ static void configure_tcc(void)
 	tcc_enable(&tcc_instance);
 }
 
+static void configure_extint_channel(void)
+{
+	struct extint_chan_conf config_extint_chan;
+	extint_chan_get_config_defaults(&config_extint_chan);
+	config_extint_chan.gpio_pin = PIN_PA20A_EIC_EXTINT4;
+	config_extint_chan.gpio_pin_mux = MUX_PA20A_EIC_EXTINT4;
+	config_extint_chan.gpio_pin_pull = EXTINT_PULL_DOWN;
+	config_extint_chan.detection_criteria = EXTINT_DETECT_HIGH;
+	extint_chan_set_config(4, &config_extint_chan);
+}
+static void configure_adc_averaging(void)
+{
+
+	struct adc_config conf_adc;
+	adc_get_config_defaults(&conf_adc);
+
+	conf_adc.positive_input = ADC_POSITIVE_INPUT_PIN10;
+
+	adc_init(&adc_instance, ADC1, &conf_adc);
+
+	adc_enable(&adc_instance);
+}
 int main(void)
 {
 	system_init();
 	configure_tcc();
 	delay_init();
+	configure_extint_channel();	configure_adc_averaging();	uint16_t result = 10;
 
 	int devideo = 0;
-	//! [main]
-	//! [main_loop]
+	int rgbtype = 1;
+	int tmr = 250;
+
 	while (true) {
-		devideo	= 65535;
-		for (int i = 1; i < 255; i++) {
-			devideo = devideo - 255;
-			tcc_set_compare_value(&tcc_instance, 3, devideo);
-			delay_ms(2);
-			
+		if ((rgbtype == 0)||(rgbtype == 1)) {
+			devideo	= 65535;
+			for (int i = 1; i < 255; i++) {
+				devideo = devideo - 255;
+				tcc_set_compare_value(&tcc_instance, 3, devideo);
+				delay_us(tmr);
+				
+			}
+			devideo	= 0;
+			for (int i = 1; i < 255; i++) {
+				devideo = devideo + 255;
+				tcc_set_compare_value(&tcc_instance, 3, devideo);
+				delay_us(tmr);
+				
+			}
 		}
-		devideo	= 0;
-		for (int i = 1; i < 255; i++) {
-			devideo = devideo + 255;
-			tcc_set_compare_value(&tcc_instance, 3, devideo);
-			delay_ms(2);
-			
+		if ((rgbtype == 0)||(rgbtype == 2)) {
+			devideo	= 65535;
+			for (int i = 1; i < 255; i++) {
+				devideo = devideo - 255;
+				tcc_set_compare_value(&tcc_instance, 0, devideo);
+				delay_us(tmr);
+				
+			}
+			devideo	= 0;
+			for (int i = 1; i < 255; i++) {
+				devideo = devideo + 255;
+				tcc_set_compare_value(&tcc_instance, 0, devideo);
+				delay_us(tmr);
+				
+			}
 		}
-		devideo	= 65535;
-		for (int i = 1; i < 255; i++) {
-			devideo = devideo - 255;
-			tcc_set_compare_value(&tcc_instance, 0, devideo);
-			delay_ms(2);
-			
+		if ((rgbtype == 0)||(rgbtype == 3)) {
+			devideo	= 65535;
+			for (int i = 1; i < 255; i++) {
+				devideo = devideo - 255;
+				tcc_set_compare_value(&tcc_instance, 1, devideo);
+				delay_us(tmr);
+				
+			}
+			devideo	= 0;
+			for (int i = 1; i < 255; i++) {
+				devideo = devideo + 255;
+				tcc_set_compare_value(&tcc_instance, 1, devideo);
+				delay_us(tmr);
+				
+			}
 		}
-		devideo	= 0;
-		for (int i = 1; i < 255; i++) {
-			devideo = devideo + 255;
-			tcc_set_compare_value(&tcc_instance, 0, devideo);
-			delay_ms(2);
-			
-		}
-		devideo	= 65535;
-		for (int i = 1; i < 255; i++) {
-			devideo = devideo - 255;
-			tcc_set_compare_value(&tcc_instance, 1, devideo);
-			delay_ms(2);
-			
-		}
-		devideo	= 0;
-		for (int i = 1; i < 255; i++) {
-			devideo = devideo + 255;
-			tcc_set_compare_value(&tcc_instance, 1, devideo);
-			delay_ms(2);
-			
-		}
+		if (extint_chan_is_detected(4)) {
+			// Do something in response to EXTINT edge detection
+			if (rgbtype == 3){
+				rgbtype = 0;
+			} else {
+				rgbtype++;
+			}
+			extint_chan_clear_detected(4);
+			delay_ms(25);
+		}		adc_start_conversion(&adc_instance);		do {
+			/* Wait for conversion to be done and read out result */
+		} while (adc_read(&adc_instance, &result) == STATUS_BUSY);		tmr = result / 10;
 	}
-	//! [main_loop]
-	//! [main]
 }
