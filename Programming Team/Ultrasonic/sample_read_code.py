@@ -33,6 +33,8 @@ def storeNew():
 	previous[0] = current;
 
 
+
+
 if (left_front_dist < 20 and front_dist < 5):
 	#stop
 	break
