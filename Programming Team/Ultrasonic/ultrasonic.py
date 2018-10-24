@@ -49,10 +49,8 @@ class DistanceMeasurer:
 
 ##############################################################################################################
 
-def initialize_sensor():
-    GPIO.setmode(GPIO.BCM)
-    trig_pin = 23                                       
-    echo_pin = 25                                       
+def initialize_sensor(trig_pin, echo_pin):
+    GPIO.setmode(GPIO.BCM)                                     
     dm = DistanceMeasurer(trig_pin, echo_pin)
     
 def measure_distance(dm):

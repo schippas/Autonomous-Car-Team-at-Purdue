@@ -5,7 +5,10 @@
 import datetime
 import ultrasonic
 
-def get_distance():
-    dm = sensor.initialize_sensor()
+def init():
+    dm = sensor.initialize_sensor(trig, echo)
+    return dm
+
+def read_value(dm):
     dist = sensor.measure_distance(dm)
     return dist
