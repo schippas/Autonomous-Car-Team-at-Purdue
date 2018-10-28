@@ -23,42 +23,43 @@ left_back_dist = 0
 right_back_front_dist = 0
 
 previous = []
-current = [left_front_dist, right_front_dist, front_dist, back_dist, left_back_dist, right_back_front_dist]
+current = [left_front_dist, right_front_dist, front_dist, back_dist, left_back_dist, right_back_dist]
 #0 is left front, 1 is right front, 2 is front, 3 is back, 4 is left back, 5 is right back
+action = [go_right_back,go_left_back,go_back,go_front,go_right_front,go_left_front]
 previous[0] = current; #0 is the most recent and 5 is the oldest data.
 def storeNew():
-	for x in xrange(5,1):
+	for x in xrange(20,1):
 		previous[x] = previous[x-1];
 		pass
 	previous[0] = current;
 
 
+lowestbound = 3
+largestbound = 517
 for x in xrange(0,5):
-	if current[x]==0 and previous[1][x] == lowestbound:
-		#stop the car immediately
+	if current[x] == lowestbound - 1 and previous[1][x] == lowestbound:
+		stop the car immediately
 		pass
 
-if current[0] && current [1] && current[2] smaller than lowestbound:
-	#make the car go backwards
+for x in xrange(3,5):
+	if current[x] = lowestbound and previous[1][x] > lowestbound:
+		stop doing anything, recalculate current path
+		pass
+	if current[x] = lowestbound and previous[1][x] <= lowestbound:
+		pass
+	
+
+for x in xrange(0,5):
+	if current[x] == 0:
+		if previous[1][x] > 3 or largestbound:
+			stop the car immediately #some thing unexpected happened
+		pass
 	pass
 
 for x in xrange(0,5):
-	if current[x] == null:
-		if previous[1][x] != null or largestbound:
-			#stop the car immediately
-			#because something strange happened
-		pass
-	pass
-
-for x in xrange(0,5):
-	if current[x] == lowestbound:
-		#go opposite direction
+	if current[x] == lowestbound or current[x] <= lowestbound:
+		do action[x]
 	pass
 
 
 #just a note, since we are storing the current and previous in a 2d array, we can use neural network to process them
-
-
-if (left_front_dist < 20 and front_dist < 5):
-	#stop
-	break
