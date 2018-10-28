@@ -33,6 +33,30 @@ def storeNew():
 	previous[0] = current;
 
 
+for x in xrange(0,5):
+	if current[x]==0 and previous[1][x] == lowestbound:
+		#stop the car immediately
+		pass
+
+if current[0] && current [1] && current[2] smaller than lowestbound:
+	#make the car go backwards
+	pass
+
+for x in xrange(0,5):
+	if current[x] == null:
+		if previous[1][x] != null or largestbound:
+			#stop the car immediately
+			#because something strange happened
+		pass
+	pass
+
+for x in xrange(0,5):
+	if current[x] == lowestbound:
+		#go opposite direction
+	pass
+
+
+#just a note, since we are storing the current and previous in a 2d array, we can use neural network to process them
 
 
 if (left_front_dist < 20 and front_dist < 5):
