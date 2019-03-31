@@ -5,11 +5,11 @@ Use this specific Markdown file as a table of contents for the folders.
 
 ## What to each person is doing for the car.
 Lidar Node -> Hyukjun  
-Camera Node -> Prineeth, Sam, Murugan 
+Camera Node -> Prineeth, Sam, Murugan  
 Ultrasonic Node -> Hardi, Pranav  
-Emergency Node -> Prineeth
+Emergency Node -> Prineeth  
 Low Down Car Control Node -> Hardi  
-Command Creator Node -> Murugan, Sam
-Driver Overwrite Node -> 
+Command Creator Node -> Murugan, Sam  
+Driver Overwrite Node ->  
 Current Stage Node -> Sahil  
 Gazebo Simulation model -> Grey
