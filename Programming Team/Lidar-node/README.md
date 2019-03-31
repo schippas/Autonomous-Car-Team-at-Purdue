@@ -8,3 +8,4 @@
 
 - find track
   - locate drivable areas
+  - path planning algorithm, like SLAM
